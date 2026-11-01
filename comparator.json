@@ -1,0 +1,10 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "OSReconstructionAudit.e_to_r",
+    "OSReconstructionAudit.e_to_r_osii",
+    "OSReconstructionAudit.r_to_e"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

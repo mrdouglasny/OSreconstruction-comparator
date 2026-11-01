@@ -1,0 +1,193 @@
+# formalization.yaml — https://github.com/mathlib-initiative/formalization.yaml (v0.4)
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+#
+# Thin Comparator wrapper for xiyin137/OSreconstruction (Lake project os-reconstruction/).
+# This repository contains no mathematics of its own: Challenge.lean is the package's
+# Mathlib-only Definitions.lean reproduced verbatim plus the three theorem holes, and
+# Solution.lean discharges them from the package through its bridge equivalences.
+version: "v0.4"
+
+project:
+  name: "OSreconstruction"
+  description: >-
+    A machine-checked proof of the Osterwalder-Schrader correspondence between Euclidean
+    Schwinger functions and relativistic Wightman distributions, in both directions, for
+    every spatial dimension d >= 1 (spacetime dimension d+1). Euclidean data are Schwinger
+    functions on the zero-diagonal Schwartz space (Osterwalder-Schrader II's test space,
+    all derivatives vanishing on coincidence loci) satisfying E0-E4: temperedness,
+    Euclidean invariance, reflection positivity, permutation symmetry, clustering.
+    Relativistic data are tempered distributions satisfying the Wightman function axioms:
+    Poincare covariance, spectrum condition (analyticity in the forward tube and spectral
+    support), locality, positive-definiteness, Hermiticity, clustering. The two sides are
+    linked by a Wick pairing: one holomorphic kernel on the forward tube whose boundary
+    values are the Wightman distribution and whose restriction to Wick-rotated Euclidean
+    points gives the Schwinger function. Three theorems are verified. (1) E'->R: OS axioms
+    plus a linear growth condition yield Wightman distributions Wick-paired with the
+    input. (2) E'->R' in Osterwalder-Schrader II's form: with the growth condition E0' of
+    OS II eq. (4.1) in its coordinate norm (2.1), the Wightman distributions exist, satisfy
+    the output bound R0' of eq. (4.3), and are the unique distribution family Wick-paired
+    with the input; the growth conditions of (1) and (2) are proved equivalent in the
+    package. (3) R->E: every Wightman family yields, via an explicit constructor, Schwinger
+    functions satisfying E0-E4 and Wick-paired with it, with no growth hypothesis. This is
+    OS II's correction of OS I: the forward direction needs linear growth, the reverse
+    direction does not produce it, so the two implications do not compose to a
+    biconditional, and the formalization reproduces that asymmetry. Scope: these are
+    theorems about Wightman functions, not the GNS reconstruction of an operator theory.
+    Four conventions are weaker than the textbook ones and are stated in the Challenge:
+    the forward tube carries the extra condition Im z_0 in the open forward cone; locality
+    is asserted for adjacent transpositions; reflection positivity is stated through a
+    totalized coercion onto zero-diagonal tests; and growth is assumed, not derived, on the
+    Euclidean side. To our knowledge this is the first machine-checked proof of the
+    Osterwalder-Schrader reconstruction theorem. Its audience is constructive and
+    axiomatic quantum field theory, where it is the bridge every Euclidean construction
+    crosses to obtain a relativistic theory; the companion formalization of the massive
+    free field and the Proca Wick square inhabit its hypotheses.
+  authors:
+    - "Xi Yin"
+    - "Michael R. Douglas"
+    - "Anna Mei"
+  responsible_maintainers: ["Xi Yin", "Michael R. Douglas"]   # CONFIRM
+  license: "Apache-2.0"
+
+repository:
+  substantive_formalization:
+    id: "xiyin137/OSreconstruction"
+    revision: "PIN-ME-40-CHAR-SHA"
+
+sources:
+  - title: "Axioms for Euclidean Green's functions"
+    authors: ["Konrad Osterwalder", "Robert Schrader"]
+    id: "10.1007/BF01645738"
+    type: "paper"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    license: "proprietary"
+    note: "Commun. Math. Phys. 31 (1973) 83-112. Axioms E0-E4 and the reconstruction programme."
+  - title: "Axioms for Euclidean Green's functions II"
+    authors: ["Konrad Osterwalder", "Robert Schrader"]
+    id: "10.1007/BF01608978"
+    type: "paper"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    license: "proprietary"
+    note: >
+      Commun. Math. Phys. 42 (1975) 281-305. The linear growth condition E0' (4.1), the
+      coordinate norm (2.1), the output bound R0' (4.3), and the corrected E'->R' theorem.
+  - title: "PCT, Spin and Statistics, and All That"
+    authors: ["Raymond F. Streater", "Arthur S. Wightman"]
+    id: "ISBN:978-0-691-07062-9"
+    type: "book"
+    relationship: "background"
+    author_endorsement: "n/a"
+    license: "proprietary"
+    note: "Wightman axioms, forward tube, Bargmann-Hall-Wightman theorem."
+  - title: "Quantum Physics: A Functional Integral Point of View"
+    authors: ["James Glimm", "Arthur Jaffe"]
+    id: "ISBN:978-0-387-96477-7"
+    type: "book"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    license: "proprietary"
+    note: "Ch. 19, reconstruction of Wightman functions from Schwinger functions."
+
+related_formalizations:
+  - id: "https://github.com/mrdouglasny/OSforGFF"
+    relationship: "other"
+    note: "The massive Gaussian free field satisfying the OS axioms (probability-measure formulation)."
+  - id: "https://github.com/math-commons/yang-mills"
+    relationship: "other"
+    note: >
+      Vendors this package's axiom records and inhabits them: the massive free field and
+      the Proca Wick square satisfy E0-E4 with the corrected growth condition.
+
+classification:
+  arxiv: ["math-ph", "hep-th"]
+  msc2020: ["81T05", "81T08", "46F12", "32A07"]
+
+status:
+  scope: >
+    Registry submission for the os-reconstruction package of xiyin137/OSreconstruction:
+    a single Mathlib-only Challenge (the package's Definitions.lean verbatim plus three
+    holes) and its Solution from the package. The three compared theorems are
+    OSReconstructionAudit.e_to_r (E'->R), e_to_r_osii (OS II's E'->R' with output growth
+    and uniqueness) and r_to_e (R->E with the explicit Schwinger constructor).
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+  main_results:
+    - declaration: "OSReconstructionAudit.e_to_r"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "comparator.json"
+      literature_dependencies:
+        - statement: "OS axioms E0-E4 with linear growth yield Wightman distributions (E'->R)"
+          source: "10.1007/BF01608978"
+    - declaration: "OSReconstructionAudit.e_to_r_osii"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "comparator.json"
+      literature_dependencies:
+        - statement: "E'->R' with growth E0' (4.1), output bound R0' (4.3), and uniqueness"
+          source: "10.1007/BF01608978"
+    - declaration: "OSReconstructionAudit.r_to_e"
+      file: "Solution.lean"
+      sorry_count: 0
+      axioms: []
+      comparator_config: "comparator.json"
+      literature_dependencies:
+        - statement: "Wightman distributions yield Schwinger functions satisfying E0-E4 (R->E)"
+          source: "10.1007/BF01645738"
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["claude-opus-4-6", "claude-fable-5"]
+      framework: "Claude Code"
+      prompting_notes: "Primary proving and refactoring, compiler-guided."
+    - method: "agent"
+      models: ["gpt-5-codex"]
+      framework: "Codex"
+      prompting_notes: "Comparator packaging, audit definitions, proof passes (per commit history)."
+    - method: "other"
+      models: ["gemini-3.1-pro"]
+      framework: "Gemini"
+      prompting_notes: "Mathematical review of statements and axioms."
+  notes: >
+    Build: `lake build` (Challenge and Solution are the default targets). All Git
+    dependencies pinned to full commit SHAs in lake-manifest.json. The package's own
+    verification (verification/check.sh) runs Comparator with kernel replay.
+
+fidelity:
+  divergences: >
+    Stated in the Challenge and in the package's docs/COMPARATOR_NOTE.html. The forward
+    tube forwardTube adds Im z_0 in V_+ to the successive-difference conditions, a proper
+    subset of the literal n-point tube; forwardAnalyticity and wickPair assert extension
+    to this smaller tube only. Locality is adjacentLocality: commutation for neighbouring
+    labels on spacelike-supported tests; adjacent transpositions generate S_n but the
+    equivalence with full locality is not part of the statement. Reflection positivity
+    osInnerProduct applies the total coercion ZeroTest.ofClassical, which sends a test
+    failing the zero-diagonal condition to zero. The Euclidean growth condition is a
+    hypothesis of the forward theorems and is not derived by the reverse theorem. The
+    arity-linear growth of e_to_r and OS II's E0' of e_to_r_osii are proved equivalent
+    (osiiOriginalLinearGrowth_iff) in the package, outside the compared statements.
+    "Wightman" means the Wightman function axioms; no Hilbert space or field operators
+    appear in the compared theorems.
+  axiom_footprint: >
+    Each compared theorem depends on exactly propext, Classical.choice and Quot.sound,
+    enforced by comparator.json's permitted_axioms. The package contains no axiom
+    declarations and no sorry outside the Challenge holes.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >
+    The three sorries in Challenge.lean are the registry holes, discharged by
+    Solution.lean through the package's bridge equivalences (eToR_iff, eToROSII_iff,
+    rToE_iff) between the audit records and the production records. The package was
+    developed in a shared repository with pull-request review among the authors.
+
+acknowledgements: >
+  Coding assistance from Claude (Opus 4.6, Fable 5), GPT-5 Codex and Gemini 3.1 Pro.
+  Gaussian-measure infrastructure from the gaussian-field library.

@@ -1,0 +1,23 @@
+name = "OSReconstructionComparator"
+version = "0.1.0"
+defaultTargets = ["Challenge", "Solution"]
+
+# The substantive development, pinned to an exact commit. Mathlib reaches the
+# workspace through it, which is what lets Challenge.lean import Mathlib while
+# importing no project source. Lake project root inside that repository:
+# os-reconstruction/.
+[[require]]
+name = "OSReconstruction"
+git = "https://github.com/xiyin137/OSreconstruction.git"
+rev = "PIN-ME-40-CHAR-SHA"
+subDir = "os-reconstruction"
+
+# The auditable statement: Mathlib-only imports, one `sorry` per advertised declaration.
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+# The same declarations, proved from the package's Solution via its bridges.
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]
