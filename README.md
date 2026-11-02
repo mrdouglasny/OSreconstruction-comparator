@@ -29,14 +29,18 @@ reproduced verbatim, followed by the three proof obligations:
 | `OSReconstructionAudit.e_to_r_osii` | OS II's form: with growth E0′ (4.1), Wightman distributions exist, satisfy the output bound R0′ (4.3), and are unique among Wick-paired families |
 | `OSReconstructionAudit.r_to_e` | every Wightman family yields, via an explicit constructor, Schwinger functions satisfying E0–E4 and Wick-paired with it — no growth hypothesis |
 
-`Solution.lean` imports the package's identical `Definitions` module and its bridge
-equivalences (`eToR_iff`, `eToROSII_iff`, `rToE_iff`), so every constant the theorems depend on
-exists in both environments under the same name; Comparator checks that they match
-structurally, that the proofs rest on nothing beyond Lean's three core axioms, and replays the
-exported proofs through a fresh kernel.
+`Solution.lean` is self-contained in the same way: the package's `Definitions.lean`, its three
+bridge files (`eToR_iff`, `eToROSII_iff`, `rToE_iff`) and its `Solution.lean` concatenated into
+one module, importing only Mathlib and the package's production modules. Both files start with
+`public import Mathlib`. Two facts about Lean's module system force this layout: an auxiliary
+proof of an *imported* definition is not re-exported identically, so the compared definitions
+must be elaborated locally on both sides; and instance search inside proof terms depends on the
+Mathlib modules loaded, so both sides must load the same ones. Comparator then checks that every
+shared constant matches structurally, that the proofs rest on nothing beyond Lean's three core
+axioms, and replays the exported proofs through a fresh kernel (and NanoDa).
 
-`scripts/gen_challenge.py` regenerates `Challenge.lean` from the package's `Definitions.lean`;
-run it after re-pinning and commit the result.
+`scripts/gen_challenge.py` and `scripts/gen_solution.py` regenerate the pair from the package's
+`verification/comparator/` directory; run both after re-pinning and commit the result.
 
 ## What the theorems do and do not say
 

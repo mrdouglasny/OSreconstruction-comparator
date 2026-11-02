@@ -9,7 +9,7 @@ defaultTargets = ["Challenge", "Solution"]
 [[require]]
 name = "OSReconstruction"
 git = "https://github.com/xiyin137/OSreconstruction.git"
-rev = "44aa4afd91ffaaaac5be31f2b37434129fd84ea0"
+rev = "5a929a61b01005d1a1207b9d9310595d6ee4367e"
 subDir = "os-reconstruction"
 
 # The auditable statement: Mathlib-only imports, one `sorry` per advertised declaration.

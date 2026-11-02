@@ -5,6 +5,10 @@ in the Challenge's transitive import closure, so Definitions cannot be imported.
 import sys, re
 defs_path, out_path = sys.argv[1], sys.argv[2]
 src = open(defs_path).read()
+if '--import-all-mathlib' in sys.argv:
+    # one `public import Mathlib` in place of the file's Mathlib import block, so the
+    # Challenge and the self-contained Solution share one instance environment
+    src = re.sub(r'(public import Mathlib[\w.]*\n)+', 'public import Mathlib\n', src, count=1)
 # Retarget the two sentences that describe the old three-file layout.
 src = src.replace(
     "`Challenge.lean` states the three propositions as named proof obligations.\n"
