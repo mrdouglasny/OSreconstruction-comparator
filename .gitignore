@@ -1,0 +1,5 @@
+/.cache/
+/.lake/
+.DS_Store
+.lake/
+.cache/
