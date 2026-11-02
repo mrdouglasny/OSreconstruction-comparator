@@ -52,7 +52,7 @@ project:
 repository:
   substantive_formalization:
     id: "xiyin137/OSreconstruction"
-    revision: "44aa4afd91ffaaaac5be31f2b37434129fd84ea0"
+    revision: "fbaf4f66f3552e1ae6c9997b834f435eac6351da"
 
 sources:
   - title: "Axioms for Euclidean Green's functions"
