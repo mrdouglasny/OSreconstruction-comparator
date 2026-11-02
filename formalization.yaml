@@ -12,36 +12,29 @@ project:
   description: >-
     A machine-checked proof of the Osterwalder-Schrader correspondence between Euclidean
     Schwinger functions and relativistic Wightman distributions, in both directions, for
-    every spatial dimension d >= 1 (spacetime dimension d+1). Euclidean data are Schwinger
-    functions on the zero-diagonal Schwartz space (Osterwalder-Schrader II's test space,
-    all derivatives vanishing on coincidence loci) satisfying E0-E4: temperedness,
-    Euclidean invariance, reflection positivity, permutation symmetry, clustering.
-    Relativistic data are tempered distributions satisfying the Wightman function axioms:
-    Poincare covariance, spectrum condition (analyticity in the forward tube and spectral
-    support), locality, positive-definiteness, Hermiticity, clustering. The two sides are
-    linked by a Wick pairing: one holomorphic kernel on the forward tube whose boundary
-    values are the Wightman distribution and whose restriction to Wick-rotated Euclidean
-    points gives the Schwinger function. Three theorems are verified. (1) E'->R: OS axioms
-    plus a linear growth condition yield Wightman distributions Wick-paired with the
-    input. (2) E'->R' in Osterwalder-Schrader II's form: with the growth condition E0' of
-    OS II eq. (4.1) in its coordinate norm (2.1), the Wightman distributions exist, satisfy
-    the output bound R0' of eq. (4.3), and are the unique distribution family Wick-paired
-    with the input; the growth conditions of (1) and (2) are proved equivalent in the
-    package. (3) R->E: every Wightman family yields, via an explicit constructor, Schwinger
-    functions satisfying E0-E4 and Wick-paired with it, with no growth hypothesis. This is
-    OS II's correction of OS I: the forward direction needs linear growth, the reverse
-    direction does not produce it, so the two implications do not compose to a
-    biconditional, and the formalization reproduces that asymmetry. Scope: these are
-    theorems about Wightman functions, not the GNS reconstruction of an operator theory.
-    Four conventions are weaker than the textbook ones and are stated in the Challenge:
-    the forward tube carries the extra condition Im z_0 in the open forward cone; locality
-    is asserted for adjacent transpositions; reflection positivity is stated through a
-    totalized coercion onto zero-diagonal tests; and growth is assumed, not derived, on the
-    Euclidean side. To our knowledge this is the first machine-checked proof of the
-    Osterwalder-Schrader reconstruction theorem. Its audience is constructive and
-    axiomatic quantum field theory, where it is the bridge every Euclidean construction
-    crosses to obtain a relativistic theory; the companion formalization of the massive
-    free field and the Proca Wick square inhabit its hypotheses.
+    every spatial dimension d >= 1. The Euclidean side is a family of Schwinger functions on
+    the zero-diagonal Schwartz space (OS II's test space) satisfying E0-E4; the relativistic
+    side is a family of tempered distributions satisfying the Wightman function axioms
+    (Poincare covariance, spectrum condition, locality, positivity, Hermiticity,
+    clustering). They are linked by a Wick pairing: one holomorphic kernel on the forward
+    tube whose boundary values give the Wightman distribution and whose restriction to Wick-
+    rotated points gives the Schwinger function. Three theorems are verified: E'->R (OS
+    axioms plus linear growth yield Wick-paired Wightman distributions); E'->R' in OS II's
+    form (with growth E0' (4.1), the Wightman distributions exist, satisfy the output bound
+    R0' (4.3), and are unique among Wick-paired families; the two growth conditions are
+    proved equivalent); and R->E (every Wightman family yields, via an explicit constructor,
+    Schwinger functions satisfying E0-E4, with no growth hypothesis). The asymmetry is OS
+    II's correction of OS I and is reproduced faithfully: growth is assumed on the Euclidean
+    side and not recovered, so the two directions do not compose to a biconditional. Scope:
+    theorems about Wightman functions, not the GNS reconstruction of operators. Four
+    conventions are weaker than the textbook ones and are visible in the Challenge: the
+    forward tube carries the extra condition Im z_0 in the open forward cone; locality is
+    stated for adjacent transpositions; reflection positivity goes through a totalized
+    coercion onto zero-diagonal tests; growth is a hypothesis, not a conclusion. To our
+    knowledge this is the first machine-checked proof of the OS reconstruction theorem; its
+    audience is constructive and axiomatic QFT, where it is the bridge every Euclidean
+    construction crosses. The companion formalization of the massive free field and the
+    Proca Wick square inhabits its hypotheses.
   authors:
     - "Xi Yin"
     - "Michael R. Douglas"
