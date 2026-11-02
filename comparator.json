@@ -6,5 +6,10 @@
     "OSReconstructionAudit.e_to_r_osii",
     "OSReconstructionAudit.r_to_e"
   ],
-  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
 }
