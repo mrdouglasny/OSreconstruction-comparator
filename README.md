@@ -76,7 +76,15 @@ sandbox.
 
 ## The pin, and the canary
 
-`lakefile.toml` requires the package at a fixed commit. That is deliberate: a registry entry
+`lakefile.toml` requires the package at a fixed commit — through
+[`mrdouglasny/os-reconstruction`](https://github.com/mrdouglasny/os-reconstruction), a root-level
+mirror of the substantive repository's `os-reconstruction/` directory made with
+`git subtree split --prefix=os-reconstruction`. The mirror's tree hash equals that directory's
+tree hash at the pinned substantive commit (`2c83922661864bf965ebceb774f3f8b2d8bed819` at
+`cf0904e3`), which anyone can check with `git rev-parse <commit>:os-reconstruction` on the
+original. It exists only because Palomar's verifier does not honor Lake `subDir`
+([PalomarSubmission#190](https://github.com/PalomarRegistry/PalomarSubmission/issues/190)); the
+substantive formalization named in `formalization.yaml` is the original repository. That is deliberate: a registry entry
 names an exact commit, and re-pinning should be a decision rather than a drift. CI carries a
 scheduled canary that builds the pair against the package's `main` instead; a red canary means
 the registered statement no longer builds against the package, the signal to re-pin,

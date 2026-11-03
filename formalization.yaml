@@ -2,9 +2,16 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 #
 # Thin Comparator wrapper for xiyin137/OSreconstruction (Lake project os-reconstruction/).
-# This repository contains no mathematics of its own: Challenge.lean is the package's
+# This repository contains no mathematics of its own: RegistryChallenge.lean is the package's
 # Mathlib-only Definitions.lean reproduced verbatim plus the three theorem holes, and
-# Solution.lean discharges them from the package through its bridge equivalences.
+# RegistrySolution.lean discharges them from the package through its bridge equivalences.
+#
+# Lake dependency vs. substantive source: lakefile.toml requires mrdouglasny/os-reconstruction,
+# a root-level mirror of the os-reconstruction/ directory of the substantive repository at the
+# commit named below, produced by `git subtree split --prefix=os-reconstruction`. Its tree hash
+# equals that directory's tree hash (2c83922661864bf965ebceb774f3f8b2d8bed819 at cf0904e3). The
+# mirror exists only because Palomar's verifier does not honor Lake `subDir`
+# (PalomarRegistry/PalomarSubmission#190); the substantive formalization is the original.
 version: "v0.4"
 
 project:
@@ -104,6 +111,9 @@ status:
     holes) and its Solution from the package. The three compared theorems are
     OSReconstructionAudit.e_to_r (E'->R), e_to_r_osii (OS II's E'->R' with output growth
     and uniqueness) and r_to_e (R->E with the explicit Schwinger constructor).
+    The Lake dependency is mrdouglasny/os-reconstruction, a git-subtree-split mirror of the
+    substantive repository's os-reconstruction/ directory with identical tree hash
+    (2c83922661864bf965ebceb774f3f8b2d8bed819); see the header comment.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []

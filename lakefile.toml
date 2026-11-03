@@ -2,15 +2,15 @@ name = "OSReconstructionComparator"
 version = "0.1.0"
 defaultTargets = ["RegistryChallenge", "RegistrySolution"]
 
-# The substantive development, pinned to an exact commit. Mathlib reaches the
-# workspace through it, which is what lets Challenge.lean import Mathlib while
-# importing no project source. Lake project root inside that repository:
-# os-reconstruction/.
+# The substantive development, pinned to an exact commit, through a root-level mirror of its
+# os-reconstruction/ directory (git subtree split; identical tree hash) because Palomar's
+# verifier does not honor Lake subDir (PalomarSubmission#190). Mathlib reaches the workspace
+# through it, which is what lets RegistryChallenge.lean import Mathlib while importing no
+# project source.
 [[require]]
 name = "OSReconstruction"
-git = "https://github.com/xiyin137/OSreconstruction.git"
-rev = "cf0904e34a7c146a9f312f601e3707dca4a87697"
-subDir = "os-reconstruction"
+git = "https://github.com/mrdouglasny/os-reconstruction.git"
+rev = "a63f143281ef1810f6acbf90f6959cf579639f1b"
 
 # Module names must be unambiguous across the Lake workspace: the package itself ships
 # libraries whose roots are `Challenge` and `Solution`, and Palomar resolves modules by name.
