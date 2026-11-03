@@ -95,7 +95,7 @@ related_formalizations:
 
 classification:
   arxiv: ["math-ph", "hep-th"]
-  msc2020: ["81T05", "81T08", "46F12", "32A07"]
+  msc2020: ["81T05", "81T08", "46F12"]
 
 status:
   scope: >
