@@ -1,6 +1,6 @@
 {
-  "challenge_module": "Challenge",
-  "solution_module": "Solution",
+  "challenge_module": "RegistryChallenge",
+  "solution_module": "RegistrySolution",
   "theorem_names": [
     "OSReconstructionAudit.e_to_r",
     "OSReconstructionAudit.e_to_r_osii",

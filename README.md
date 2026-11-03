@@ -15,8 +15,8 @@ development, pinned to an exact commit, in `formalization.yaml`.
 
 | file | what it is |
 |---|---|
-| `Challenge.lean` | the statement a mathematician audits — **imports Mathlib and nothing else** |
-| `Solution.lean` | the same three declarations, proved from the package |
+| `RegistryChallenge.lean` | the statement a mathematician audits — **imports Mathlib and nothing else** |
+| `RegistrySolution.lean` | the same three declarations, proved from the package |
 
 The Challenge may not import the package, or anything else project-specific, anywhere in its
 transitive import closure. It is therefore the package's own Mathlib-only audit file,
@@ -29,7 +29,7 @@ reproduced verbatim, followed by the three proof obligations:
 | `OSReconstructionAudit.e_to_r_osii` | OS II's form: with growth E0′ (4.1), Wightman distributions exist, satisfy the output bound R0′ (4.3), and are unique among Wick-paired families |
 | `OSReconstructionAudit.r_to_e` | every Wightman family yields, via an explicit constructor, Schwinger functions satisfying E0–E4 and Wick-paired with it — no growth hypothesis |
 
-`Solution.lean` is self-contained in the same way: the package's `Definitions.lean`, its three
+`RegistrySolution.lean` is self-contained in the same way: the package's `Definitions.lean`, its three
 bridge files (`eToR_iff`, `eToROSII_iff`, `rToE_iff`) and its `Solution.lean` concatenated into
 one module, importing only Mathlib and the package's production modules. Both files start with
 `public import Mathlib`. Two facts about Lean's module system force this layout: an auxiliary
@@ -39,6 +39,8 @@ Mathlib modules loaded, so both sides must load the same ones. Comparator then c
 shared constant matches structurally, that the proofs rest on nothing beyond Lean's three core
 axioms, and replays the exported proofs through a fresh kernel (and NanoDa).
 
+The module names carry a `Registry` prefix because the package itself ships libraries rooted at
+`Challenge` and `Solution`, and Palomar resolves modules by name across the whole Lake workspace.
 `scripts/gen_challenge.py` and `scripts/gen_solution.py` regenerate the pair from the package's
 `verification/comparator/` directory; run both after re-pinning and commit the result.
 
@@ -58,7 +60,7 @@ the Wightman *function* axioms; no Hilbert space or field operators appear.
 ## Verifying
 
 ```bash
-lake build                  # builds Challenge and Solution — both are default targets
+lake build                  # builds RegistryChallenge and RegistrySolution — both are default targets
 ./scripts/verify-comparator.sh
 bash scripts/check-pair.sh  # source-level gate: no axioms/escape hatches; Challenge has
                             # exactly the three challenge-hole sorries, Solution none

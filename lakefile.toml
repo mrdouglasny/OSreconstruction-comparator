@@ -1,6 +1,6 @@
 name = "OSReconstructionComparator"
 version = "0.1.0"
-defaultTargets = ["Challenge", "Solution"]
+defaultTargets = ["RegistryChallenge", "RegistrySolution"]
 
 # The substantive development, pinned to an exact commit. Mathlib reaches the
 # workspace through it, which is what lets Challenge.lean import Mathlib while
@@ -12,12 +12,14 @@ git = "https://github.com/xiyin137/OSreconstruction.git"
 rev = "cf0904e34a7c146a9f312f601e3707dca4a87697"
 subDir = "os-reconstruction"
 
+# Module names must be unambiguous across the Lake workspace: the package itself ships
+# libraries whose roots are `Challenge` and `Solution`, and Palomar resolves modules by name.
 # The auditable statement: Mathlib-only imports, one `sorry` per advertised declaration.
 [[lean_lib]]
-name = "Challenge"
-roots = ["Challenge"]
+name = "RegistryChallenge"
+roots = ["RegistryChallenge"]
 
 # The same declarations, proved from the package's Solution via its bridges.
 [[lean_lib]]
-name = "Solution"
-roots = ["Solution"]
+name = "RegistrySolution"
+roots = ["RegistrySolution"]

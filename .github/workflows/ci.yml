@@ -39,7 +39,7 @@ jobs:
         with: { persist-credentials: false }
       - name: Free disk space
         run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
-      # defaultTargets is ["Challenge", "Solution"], so a plain build covers both.
+      # defaultTargets is ["RegistryChallenge", "RegistrySolution"], so a plain build covers both.
       - uses: leanprover/lean-action@v1
         with:
           build: true
